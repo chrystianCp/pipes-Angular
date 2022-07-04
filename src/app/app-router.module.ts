@@ -12,17 +12,17 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'uncommon',
+    component: NoComunesComponent,    
+  },
+  {
     path: 'numeros',
     component: NumerosComponent,    
   },
   {
-    path: 'no-comunes',
-    component: NoComunesComponent,    
-  },
-  {
     path: 'ordenar',
     component: OrdenarComponent,    
-  },
+  },  
   {
     path: '**',
     redirectTo: ''

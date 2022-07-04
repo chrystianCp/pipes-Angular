@@ -23,11 +23,11 @@ registerLocaleData(localFr);
   ],
   imports: [
     BrowserModule,      
+    BrowserAnimationsModule,  
     AppRouterModule,
     SharedModule,  
     RouterModule,
     VentasModule,
-    BrowserAnimationsModule  
   ],
   providers: [
     { 

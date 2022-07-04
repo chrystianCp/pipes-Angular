@@ -1,1 +1,77 @@
-<p>no-comunes works!</p>
+
+<div class="grid">    
+    <div class="col">
+        <h1>Pipes no tan comunes</h1>
+        <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col">
+        <p-fieldset legend="Json Pipe" [toggleable]="true">        
+            <pre>{{heroes | json}}</pre>
+        </p-fieldset>
+    </div>
+    <div class="col">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <b>Original</b>
+            <pre>{{ clientesActivos }}</pre>
+
+            <b>slice:0:5</b>
+            <pre>{{clientesActivos | slice:0:5}}</pre>
+            <b>slice:2:5</b>
+            <pre>{{clientesActivos | slice:2:5}}</pre>
+
+        </p-fieldset>
+    </div>    
+    <div class="col">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+        
+            <ul>
+                <li *ngFor="let el of persona | keyvalue">
+                    <b>{{el.key | titlecase}}:</b> {{el.value}}
+                </li>
+            </ul>
+
+        </p-fieldset>
+    </div>
+    
+</div>
+
+<div class="grid">  
+    <div class="col">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                Saludos {{nombreActual}}, es un placer {{generos[actual-1] | i18nSelect: invitacionMapa}} a nuestro evento.
+            </p>
+            <p-button label="Cambiar persona"
+                      (onClick)="cambiarPersona()" 
+                      icon="pi pi-users"
+                      iconPos="right"></p-button>
+        </p-fieldset>
+    </div>
+    <div class="col">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{clientesActivos.length | i18nPlural: clientesMapa}}.                
+            </p>
+            <button pButton
+                    (click)="funarCliente()"
+                    class="p-button-danger"
+                    icon="pi pi-user-minus"></button>
+
+            <button pButton
+                    class="p-button-info ml-2" 
+                    (click)="perdonarCliente()"
+                    icon="pi pi-user-plus"></button>
+        </p-fieldset>
+    </div>
+    <div class="col">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+           <pre><b>Observable:</b> {{miObservable | async}}</pre>
+           <pre><b>Promesa: (5seg)</b> {{valorPromesa | async}}</pre>
+        </p-fieldset>
+    </div>
+    
+
+</div>
