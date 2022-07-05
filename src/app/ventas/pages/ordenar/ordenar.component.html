@@ -20,14 +20,17 @@
                 <button pButton
                         icon="pi pi-sort"
                         label="Por nombre"
+                        (click)="ordenarPor('Por nombre')"
                         class="p-button-secondary mr-2"></button>
                 <button pButton
                         icon="pi pi-sort"
-                        label="Valores"
+                        label="Vuela"
+                        (click)="ordenarPor('Vuela')"
                         class="p-button-help mr-2"></button>
                 <button pButton
                         icon="pi pi-sort"
                         label="Por color"
+                        (click)="ordenarPor('Por color')"
                         class="p-button-info mr-2"></button>
             </div>
         </p-toolbar>
@@ -35,7 +38,7 @@
 </div>
 <div class="grid">
     <div class="col mt-1">
-        <p-table [value]="heroes" responsiveLayout="scroll">
+        <p-table [value]="heroes | ordenar:ordenarProp" responsiveLayout="scroll">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nombre</th>
@@ -50,6 +53,29 @@
                     <td>{{heroe.color}}</td>                    
                 </tr>
             </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col mt-1">
+        <p-table [value]="heroes | slice:0" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+
+                <tr>
+                    <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+                    <th pSortableColumn="vuela">Vuela <p-sortIcon field="vuela"></p-sortIcon></th>
+                    <th pSortableColumn="color">Color <p-sortIcon field="color"></p-sortIcon></th>                    
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-heroe>
+                <tr>
+                    <td>{{heroe.nombre}}</td>
+                    <td>{{heroe.vuela | vuela | titlecase}}</td>
+                    <td>{{heroe.color}}</td>                    
+                </tr>
+            </ng-template>
+
         </p-table>
     </div>
 </div>
